@@ -1,88 +1,85 @@
-# House-Price-Prediction-Model-Project
-This project aims to predict house prices using machine learning. The model is built using a dataset with multiple features that influence house prices, such as the number of rooms, location, and other attributes. The project demonstrates the process of data preprocessing, model training, and deployment using Flask for prediction via a web interface.
+# House Price Prediction Model
 
-## Project Overview
+This project builds a machine learning model to predict house prices using the Ames Housing dataset. The dataset includes detailed information about houses, such as their size, quality, neighborhood, and various other features. The goal is to create an accurate model that can estimate house prices based on these features.
 
-This project involves building a machine learning model to predict house prices based on various input features. The steps involved include:
-- Data cleaning and preprocessing
-- Feature engineering
-- Model selection and training
-- Model evaluation
-- Saving the trained model
-
-## Technologies Used
-
-- **Python**: Programming language used for data analysis and model building.
-- **Scikit-learn**: A machine learning library used for building and training the prediction model.
-- **Pandas**: For data manipulation and analysis.
-- **NumPy**: For numerical operations.
-- **Joblib**: To save and load the trained model.
-- **Matplotlib/Seaborn**: For data visualization.
 
 ## Dataset
 
-The dataset used in this project contains various features about houses (e.g., size, location, number of rooms) and their corresponding prices. The dataset can be loaded into the project as a CSV file. Ensure that the dataset is structured correctly with the necessary columns for the model.
+The dataset used in this project is the **Ames Housing dataset**, which contains 82 features and 2,930 observations about residential properties in Ames, Iowa. The target variable is `SalePrice`, representing the sale price of the house in USD.
 
-Sample data can look like this:
-- Square footage of the house
-- Number of bedrooms
-- Number of bathrooms
-- Location/Neighborhood
-- Year built
-
-## Steps Involved
-
-1. **Data Preprocessing**: Clean and prepare the data by handling missing values, encoding categorical variables, and scaling numerical features.
-2. **Model Training**: A regression model (e.g., Random Forest, Linear Regression) is trained using the dataset.
-3. **Model Evaluation**: The model is evaluated using metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared to ensure accurate predictions.
-4. **Model Saving**: The trained model is saved using `joblib` for later use.
-
-
-## How to Run the Project
-
-### Prerequisites
-To run the project, you need to have the following Python packages installed:
-- pandas
-- numpy
-- scikit-learn
-- joblib
-- matplotlib
-- seaborn
-
-You can install the required libraries using pip:
-
-```bash
-pip install -r requirements.txt
-```
-
-### Steps to Run Locally
-
-1. **Clone the repository**:
-
-```bash
-git clone https://github.com/your-username/house-price-prediction.git
-cd house-price-prediction
-```
-
-2. **Train the model** (if the model isn't saved yet):
-
-   Open a Jupyter notebook or Python script to train the model. This involves loading the dataset, preprocessing it, training the model, and saving the model using `joblib`.
-
-   Example:
-
-   ```python
-   import joblib
-   from sklearn.ensemble import RandomForestRegressor
-   # Your code to load data and train the model
-   model = RandomForestRegressor()
-   model.fit(X_train, y_train)
-   joblib.dump(model, 'house_price_model.pkl')
-   ```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Key aspects of the dataset:
+- **Target Variable:** `SalePrice`
+- **Features:** Mixture of numerical and categorical variables, including house size, neighborhood, year built, and more.
+- **Source:** [Ames Housing Dataset](http://jse.amstat.org/v19n3/decock.pdf)
 
 ---
 
-Feel free to contribute or suggest improvements!
+## Features
+
+### Preprocessing Steps:
+1. **Numerical Features:** 
+   - Missing values are imputed with the mean.
+   - Features are standardized using `StandardScaler`.
+
+2. **Categorical Features:**
+   - Missing values are imputed with the most frequent value.
+   - Features are encoded using one-hot encoding.
+
+### Target Variable:
+- `SalePrice`: The sale price of the house in USD.
+
+---
+
+## Model
+
+The model is implemented using a **Random Forest Regressor**, which is an ensemble learning technique that uses multiple decision trees for improved accuracy. The pipeline includes:
+1. Data Preprocessing (handling missing values and encoding).
+2. Feature Scaling and Transformation.
+3. Random Forest Regressor for predictions.
+
+---
+
+## Results
+
+The model's performance metrics are as follows:
+- **Mean Absolute Error (MAE):** \$15,712.35
+- **Root Mean Squared Error (RMSE):** \$26,140.10
+- **R² Score:** 0.915
+
+This indicates that the model explains 91.5% of the variance in house prices and achieves reasonable prediction accuracy.
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+- Python 3.8 or later
+- Libraries: `pandas`, `numpy`, `scikit-learn`
+
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/house-price-prediction.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd house-price-prediction
+   ```
+3. Install the required libraries:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Place the dataset (`AmesHousing.csv`) in the project folder.
+5. Run the script:
+   ```bash
+   python house_price_prediction.py
+   ```
+
+---
+
+## Future Work
+
+- **Model Optimization:** Experiment with hyperparameter tuning for Random Forest.
+- **Additional Models:** Test other algorithms like Gradient Boosting or Neural Networks.
+- **Feature Engineering:** Derive new features or remove redundant ones for better accuracy.
+- **Visualization:** Add exploratory data analysis (EDA) and visualizations for better insights.
